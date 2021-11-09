@@ -108,31 +108,31 @@ def main():
                     amount = matic_balance - Web3.toWei(5, "ether")
                     deposit_cond = True
 
-        if deposit_cond == True:
-            deposit = False
-            attempt3 = 0
-            while attempt3 <= 10 and deposit != True:
-                try:
-                    tx3 = deposit_wmatic(amount, account)
-                    tx3.wait(1)
-                    deposit = True
-                except:
-                    attempt3 += 1
-                    pass
+            if deposit_cond == True:
+                deposit = False
+                attempt3 = 0
+                while attempt3 <= 10 and deposit != True:
+                    try:
+                        tx3 = deposit_wmatic(amount, account)
+                        tx3.wait(1)
+                        deposit = True
+                    except:
+                        attempt3 += 1
+                        pass
 
-            if deposit == True:
-                message = f"""\
-                Subject: Rewards Deposited
+                if deposit == True:
+                    message = f"""\
+                    Subject: Rewards Deposited
+                
+                    Account:  {account}
+    
+                    Rewards claimed: {bal/(10**18)} Matic
             
-                Account:  {account}
-
-                Rewards claimed: {bal/(10**18)} Matic
-        
-                Rewards reinvested: {amount/(10**18)}
-
-                Transactions:
-                {tx1}
-                {tx2}
-                {tx3}
-                """
-                send_message()
+                    Rewards reinvested: {amount/(10**18)}
+    
+                    Transactions:
+                    {tx1}
+                    {tx2}
+                    {tx3}
+                    """
+                    send_message()
