@@ -136,16 +136,3 @@ def main():
                 {tx3}
                 """
                 send_message()
-
-
-
-
-
-
-
-
-
-
-
-
-
