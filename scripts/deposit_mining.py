@@ -31,9 +31,20 @@ def main():
     print(weth_bal)
 
     if weth_bal > 0:
-        tx1 = lending_pool.deposit(weth_address, weth_bal, account.address, 0, {"from": account})
-        tx1.wait(1)
-        send_deposit_update(weth_bal,tx1,health)
+        attempt = 0
+        dep = False
+        while attempt >= 10 and dep == False:
+            try:
+                tx1 = lending_pool.deposit(weth_address, weth_bal, account.address, 0, {"from": account})
+                tx1.wait(1)
+                    dep = True
+                # See account stats
+                list_ = lending_pool.getUserAccountData(account)
+                health = list_[5] / (10 ** 18)
+                send_deposit_update(weth_bal,tx1,health)
+            except:
+                attempt += 1
+                pass
 
     # See account stats
     list_ = lending_pool.getUserAccountData(account)
