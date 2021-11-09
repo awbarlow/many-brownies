@@ -68,7 +68,7 @@ def main():
         print(f'For account {account.address} balance:')
         print(bal / (10 ** 18))
 
-        if bal > Web3.toWei(1.25, "ether"):
+        if bal > Web3.toWei(1.1, "ether"):
 
             # Claim - while loop allows for failures which tends to happen
             attempt1 = 0
