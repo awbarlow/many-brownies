@@ -2,16 +2,14 @@ import smtplib, ssl
 from scripts.config import PASSWORD
 
 
-def send_deposit_update(balance, tx):
+def send_deposit_update(balance, tx, health):
     port = 465  # For SSL
     email = "principalcomponents10@gmail.com"
     password = PASSWORD
-    #password = input("Type your password and press enter: ")
+
 
     sender_email = email
     receiver_email = "aaron.w.barlow@gmail.com"
-    #balance = 0
-    #tx = 0
 
     this = 'test string'
     message = f"""\
@@ -23,6 +21,9 @@ def send_deposit_update(balance, tx):
     It was deposited with this transaction:
 
     {tx}
+    
+    Your health factor is:
+    {health}
     """
 
     # Create a secure SSL context
