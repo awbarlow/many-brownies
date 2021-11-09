@@ -129,14 +129,7 @@ def main():
                     Subject: Rewards Deposited
                 
                     Account:  {account}
-    
-                    Rewards claimed: {bal/(10**18)} Matic
             
                     Rewards reinvested: {amount/(10**18)}
-    
-                    Transactions:
-                    {tx1}
-                    {tx2}
-                    {tx3}
                     """
                     send_message()
