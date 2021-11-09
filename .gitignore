@@ -1,0 +1,8 @@
+__pycache__
+.env
+.history
+.hypothesis/
+citrus.py
+config.py
+build/contracts
+reports/
