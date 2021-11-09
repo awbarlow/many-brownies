@@ -90,7 +90,6 @@ def main():
             attempt2 = 0
             unwrap = False
             while attempt2 <= 10 and unwrap != True:
-                print('ABOUT TO ATTEMPT UNWRAP')
                 try:
                     tx2 = unwrap_all(account)
                     tx2.wait(1)
@@ -132,4 +131,4 @@ def main():
             
                     Rewards reinvested: {amount/(10**18)}
                     """
-                    send_message()
+                    send_message(message)
