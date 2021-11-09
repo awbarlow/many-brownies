@@ -69,7 +69,6 @@ def main():
         print(bal / (10 ** 18))
 
         if bal > Web3.toWei(1.1, "ether"):
-
             # Claim - while loop allows for failures which tends to happen
             attempt1 = 0
             claim = False
@@ -82,7 +81,11 @@ def main():
                 except:
                     attempt1 += 1
                     pass
+        wmatic_address = config["networks"][network.show_active()]["wmatic_address"]
+        wmatic = interface.IERC20(wmatic_address)
+        wmatic_bal = wmatic.balanceOf(account)
 
+        if wmatic_bal >= Web3.toWei(1,"ether"):
             # Claim - while loop allows for failures which tends to happen
             attempt2 = 0
             unwrap = False
@@ -95,30 +98,30 @@ def main():
                     attempt2 += 1
                     pass
 
-            # Now redeposit
-            # I want different behavior from the two accounts
-            matic_balance = account.balance()
-            deposit_cond = False
-            if account == main_act:
-                if matic_balance > Web3.toWei(1, "ether"):
-                    amount = matic_balance - Web3.toWei(0.2, "ether")
-                    deposit_cond = True
-            if account == lev_act:
-                if matic_balance > Web3.toWei(5, "ether"):
-                    amount = matic_balance - Web3.toWei(5, "ether")
-                    deposit_cond = True
+        # Now redeposit
+        # I want different behavior from the two accounts
+        matic_balance = account.balance()
+        deposit_cond = False
+        if account == main_act:
+            if matic_balance > Web3.toWei(1, "ether"):
+                amount = matic_balance - Web3.toWei(0.2, "ether")
+                deposit_cond = True
+        if account == lev_act:
+            if matic_balance > Web3.toWei(5, "ether"):
+                amount = matic_balance - Web3.toWei(5, "ether")
+                deposit_cond = True
 
-            if deposit_cond == True:
-                deposit = False
-                attempt3 = 0
-                while attempt3 <= 10 and deposit != True:
-                    try:
-                        tx3 = deposit_wmatic(amount, account)
-                        tx3.wait(1)
-                        deposit = True
-                    except:
-                        attempt3 += 1
-                        pass
+        if deposit_cond == True:
+            deposit = False
+            attempt3 = 0
+            while attempt3 <= 10 and deposit != True:
+                try:
+                    tx3 = deposit_wmatic(amount, account)
+                    tx3.wait(1)
+                    deposit = True
+                except:
+                    attempt3 += 1
+                    pass
 
                 if deposit == True:
                     message = f"""\
