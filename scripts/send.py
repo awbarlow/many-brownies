@@ -1,0 +1,52 @@
+import smtplib, ssl
+from scripts.config import PASSWORD
+
+
+def send_deposit_update(balance, tx):
+    port = 465  # For SSL
+    email = "principalcomponents10@gmail.com"
+    password = PASSWORD
+    #password = input("Type your password and press enter: ")
+
+    sender_email = email
+    receiver_email = "aaron.w.barlow@gmail.com"
+    #balance = 0
+    #tx = 0
+
+    this = 'test string'
+    message = f"""\
+    Subject: Deposit Made
+
+    You had a WETH Balance of: {balance}
+
+
+    It was deposited with this transaction:
+
+    {tx}
+    """
+
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+        server.login(email, password)
+        # TODO: Send email here
+        server.sendmail(sender_email, receiver_email, message)
+    return 0
+
+def send_message(message):
+    port = 465  # For SSL
+    email = "principalcomponents10@gmail.com"
+    password = PASSWORD
+
+    sender_email = email
+    receiver_email = "aaron.w.barlow@gmail.com"
+
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+        server.login(email, password)
+        # TODO: Send email here
+        server.sendmail(sender_email, receiver_email, message)
+    return 0

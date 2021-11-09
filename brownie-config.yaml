@@ -1,0 +1,24 @@
+networks:
+  polygon-main:
+    # Chainlink price feed addresses
+    dai_eth_price_feed: "0xFC539A559e170f848323e19dfD66007520510085"
+    matic_eth_price_feed: "0x327e23A4855b6F663a28c5161541d69Af8973302"
+    usdc_eth_price_feed: "0xefb7e6be8356cCc6827799B6A7348eE674A80EaE"
+    # Token addresses
+    weth_address: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+    wmatic_address: "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270"
+    dai_address: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
+    usdc_address: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+    # Verify false on local network
+    verify: True
+    # AAVE lending pool
+    lending_pool_addresses_provider: "0xd05e3E715d945B59290df0ae8eF85c1BdB684744"
+    aave_dai_token: "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"
+    aave_incetives: "0x357D51124f59836DeD84c8a1730D72B749d8BC23"
+    # Sushiswap router
+    sushiswapv2_router02: '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506'
+    # Gateway
+    eth_gateway: "0xbEadf48d62aCC944a06EEaE0A9054A90E5A7dc97"
+wallets:
+  from_key: ${PRIVATE_KEY}
+  lev_key: ${LEVERAGE}
