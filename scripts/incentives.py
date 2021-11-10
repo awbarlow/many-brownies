@@ -125,10 +125,10 @@ def main():
 
                 if deposit == True:
                     message = f"""\
-                    Subject: Rewards Deposited
+                            Subject: Rewards Deposited  
                 
-                    Account:  {account}
+                            Account:  {account}  
             
-                    Rewards reinvested: {amount/(10**18)}
-                    """
+                            Rewards reinvested: {amount/(10**18)}
+                            """
                     send_message(message)
