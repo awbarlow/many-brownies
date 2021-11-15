@@ -2,6 +2,7 @@ from scripts.helper import get_account
 from brownie import interface, config, network
 from web3 import Web3
 from scripts.send import send_message
+import time
 
 
 # Deposited assets and addresses
@@ -80,6 +81,7 @@ def main():
                     claim = True
                 except:
                     attempt1 += 1
+                    time.sleep(5)
                     pass
         wmatic_address = config["networks"][network.show_active()]["wmatic_address"]
         wmatic = interface.IERC20(wmatic_address)
@@ -96,6 +98,7 @@ def main():
                     unwrap = True
                 except:
                     attempt2 += 1
+                    time.sleep(5)
                     pass
 
         # Now redeposit
@@ -121,10 +124,11 @@ def main():
                     deposit = True
                 except:
                     attempt3 += 1
+                    time.sleep(5)
                     pass
 
                 if deposit == True:
-                    message = f"""\
+                    message = f"""\  
                                 Subject: Rewards Deposited  
                 
                                 Account:  {account}  
