@@ -107,7 +107,7 @@ def main():
         deposit_cond = False
         if account == main_act:
             if matic_balance > Web3.toWei(1, "ether"):
-                amount = matic_balance - Web3.toWei(0.2, "ether")
+                amount = matic_balance - Web3.toWei(1, "ether")
                 deposit_cond = True
         if account == lev_act:
             if matic_balance > Web3.toWei(5, "ether"):
