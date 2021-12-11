@@ -51,7 +51,7 @@ def main():
     list_ = lending_pool.getUserAccountData(account)
     health = list_[5]/(10**18)
 
-    if health < 1.2:
+    if health < 1.15:
         message = f"""\
         Subject: AAVE HEALTH ALERT
 
