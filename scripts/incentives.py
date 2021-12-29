@@ -14,7 +14,8 @@ assets = { 'mDAI_debt' : "0x75c4d1fb84429023170086f06e682dcbbf537b7d",
            'AAVE_MATIC_WETH' : "0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",
            'AAVE_MATIC_WMATIC' : "0x8dF3aad3a84da6b69A4DA8aeC3eA40d9091B2Ac4",
            'AAVE_MATIC_USDC' : "0x1a13f4ca1d028320a707d99520abfefca3998b7f",
-           'AAVE_MATIC_DAI' : "0x27f8d03b3a2196956ed754badc28d73be8830a6e"}
+           'AAVE_MATIC_DAI' : "0x27f8d03b3a2196956ed754badc28d73be8830a6e",
+           'AAVE_MATIC_USDT' : '0x60d55f02a771d515e077c9c2403a1ef324885cec'}
 
 def get_incentive_balance(assets,account):
     incentive = interface.IAaveIncentivesController(config["networks"][network.show_active()]["aave_incetives"])
